@@ -18,9 +18,9 @@ public final class UFOPositionComponent: UFOComponent
         return "UFOPositionComponent"
     }
     
-    public var x: Double = 0.0
-    public var y: Double = 0.0
-    public var rotation: Double = 0.0
+    public var x: Double            = 0.0
+    public var y: Double            = 0.0
+    public var rotation: Double     = 0.0
     
     public init(x: Double, y: Double, rotation: Double)
     {

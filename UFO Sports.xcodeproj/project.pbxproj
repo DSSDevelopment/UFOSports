@@ -12,6 +12,7 @@
 		6531377A1A1547C7002453B0 /* UFOUpdatePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653137791A1547C7002453B0 /* UFOUpdatePhase.swift */; };
 		6531377D1A154821002453B0 /* UFOScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531377C1A154821002453B0 /* UFOScene.swift */; };
 		653137801A154B46002453B0 /* UFOUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531377F1A154B46002453B0 /* UFOUpdatable.swift */; };
+		65C8E59B1A16C5D40022AB2C /* UFOPhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8E59A1A16C5D40022AB2C /* UFOPhysicsSystem.swift */; };
 		65C916451A15655C004C4A9B /* UFORenderingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C916441A15655C004C4A9B /* UFORenderingSystem.swift */; };
 		65C916471A156AB7004C4A9B /* UFOEntityObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C916461A156AB7004C4A9B /* UFOEntityObserver.swift */; };
 		65C916491A1574D7004C4A9B /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C916481A1574D7004C4A9B /* Globals.swift */; };
@@ -46,6 +47,7 @@
 		653137791A1547C7002453B0 /* UFOUpdatePhase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFOUpdatePhase.swift; sourceTree = "<group>"; };
 		6531377C1A154821002453B0 /* UFOScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFOScene.swift; sourceTree = "<group>"; };
 		6531377F1A154B46002453B0 /* UFOUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFOUpdatable.swift; sourceTree = "<group>"; };
+		65C8E59A1A16C5D40022AB2C /* UFOPhysicsSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFOPhysicsSystem.swift; sourceTree = "<group>"; };
 		65C916441A15655C004C4A9B /* UFORenderingSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFORenderingSystem.swift; sourceTree = "<group>"; };
 		65C916461A156AB7004C4A9B /* UFOEntityObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFOEntityObserver.swift; sourceTree = "<group>"; };
 		65C916481A1574D7004C4A9B /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				653137761A1546D1002453B0 /* UFOSystem.swift */,
 				65C916441A15655C004C4A9B /* UFORenderingSystem.swift */,
+				65C8E59A1A16C5D40022AB2C /* UFOPhysicsSystem.swift */,
 			);
 			name = Systems;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				65C916471A156AB7004C4A9B /* UFOEntityObserver.swift in Sources */,
 				6531377A1A1547C7002453B0 /* UFOUpdatePhase.swift in Sources */,
 				65D1EEA61A1495E8000FFAFA /* UFOComponent.swift in Sources */,
+				65C8E59B1A16C5D40022AB2C /* UFOPhysicsSystem.swift in Sources */,
 				65D1EEA01A14836F000FFAFA /* UFOEntity.swift in Sources */,
 				65D1EE7B1A1481C4000FFAFA /* GameScene.swift in Sources */,
 				653137771A1546D1002453B0 /* UFOSystem.swift in Sources */,

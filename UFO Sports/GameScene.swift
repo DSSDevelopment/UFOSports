@@ -23,6 +23,7 @@ class GameScene: SKScene {
             updateObservers.append(entityManager)
             entityManager.addSystem(renderingSystem)
             entityFactory.createUFOPlayerWithEntityManager(entityManager, position: CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)))
+            entityFactory.createUFOPlayerWithEntityManager(entityManager, position: CGPoint(x:CGRectGetMidX(self.frame)+65.0, y:CGRectGetMidY(self.frame)+20.0))
             initialized = true
         }
     }
