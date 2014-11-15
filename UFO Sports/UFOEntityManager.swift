@@ -30,7 +30,8 @@ public class UFOEntityManager
     
     func generateNewEid() -> Int64
     {
-        if (lowestUnassignedEid < INT64_MAX) { return lowestUnassignedEid
+        if (lowestUnassignedEid < INT64_MAX) {
+            return lowestUnassignedEid++
         } else {
             for var i: Int64 = 1; i < INT64_MAX; i++ { return i }
         }
@@ -41,7 +42,7 @@ public class UFOEntityManager
     {
         var eid: Int64      = self.generateNewEid()
         var entity          = UFOEntity().initWithEid(eid)
-
+        
         return entity
     }
     
