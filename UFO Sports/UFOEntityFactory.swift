@@ -18,10 +18,12 @@ class UFOEntityFactory
         ufotexture.filteringMode = .Nearest
         var ufoNode = SKSpriteNode(texture: ufotexture)
         var renderComponent = UFORenderComponent(node: ufoNode)
-        var position = UFOPositionComponent(x: Double(position.x), y: Double(position.y), rotation: 0.0)
+        var position = UFOPositionComponent(x: Double(position.x), y: Double(position.y), rotation: 1)
         var physicsBody = UFOPhysicsBodyComponent()
+        physicsBody.speed = 40.0
         entityManager.addComponentToEntity(renderComponent, entity: entity)
         entityManager.addComponentToEntity(position, entity: entity)
+        entityManager.addComponentToEntity(physicsBody, entity: entity)
         entityManager.addEntity(entity)
     }
 }

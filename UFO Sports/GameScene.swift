@@ -13,6 +13,7 @@ class GameScene: SKScene {
     var entityFactory = UFOEntityFactory()
     var entityManager = UFOEntityManager()
     var renderingSystem = UFORenderingSystem()
+    var physicsSystem = UFOPhysicsSystem()
     var updateObservers = [UFOUpdatable]()
     
     override func didMoveToView(view: SKView)
@@ -22,6 +23,7 @@ class GameScene: SKScene {
             entityManager.scene = self
             updateObservers.append(entityManager)
             entityManager.addSystem(renderingSystem)
+            entityManager.addSystem(physicsSystem)
             entityFactory.createUFOPlayerWithEntityManager(entityManager, position: CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)))
             entityFactory.createUFOPlayerWithEntityManager(entityManager, position: CGPoint(x:CGRectGetMidX(self.frame)+65.0, y:CGRectGetMidY(self.frame)+20.0))
             initialized = true
@@ -31,6 +33,11 @@ class GameScene: SKScene {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
     {
         /* Called when a touch begins */
+        
+    }
+    
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent)
+    {
         
     }
    

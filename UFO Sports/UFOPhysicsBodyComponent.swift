@@ -18,9 +18,9 @@ public final class UFOPhysicsBodyComponent: UFOComponent {
         return "UFOPhysicsBodyComponent"
     }
     
-    var speed: Float = 0.0;
-    var acceleration: Float = 0.0;
-    var collisionRadius: Double = 0.0;
-    var mass = 0;
+    var speed: Float = 0.0
+    var acceleration: Float = 0.0
+    var collisionRadius: Double = 0.0
+    var mass = 0
     
 }
