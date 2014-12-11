@@ -12,11 +12,7 @@
 		6531377A1A1547C7002453B0 /* UFOUpdatePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653137791A1547C7002453B0 /* UFOUpdatePhase.swift */; };
 		6531377D1A154821002453B0 /* UFOScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531377C1A154821002453B0 /* UFOScene.swift */; };
 		653137801A154B46002453B0 /* UFOUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6531377F1A154B46002453B0 /* UFOUpdatable.swift */; };
-		653BBF401A3A3ECF00067B03 /* aSBgImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 653BBF3F1A3A3ECF00067B03 /* aSBgImg.png */; };
-		653BBF421A3A3EDC00067B03 /* aSThumbImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 653BBF411A3A3EDC00067B03 /* aSThumbImg.png */; };
 		653BBF441A3A3EFB00067B03 /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BBF431A3A3EFB00067B03 /* AnalogStick.swift */; };
-		653BBF471A3A407400067B03 /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = 653BBF451A3A407400067B03 /* apple.png */; };
-		653BBF481A3A407400067B03 /* apple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 653BBF461A3A407400067B03 /* apple@2x.png */; };
 		653BBF4A1A3A449200067B03 /* UFOLocalPlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BBF491A3A449200067B03 /* UFOLocalPlayerComponent.swift */; };
 		653BBF4C1A3A464200067B03 /* UFOPlayerControlSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653BBF4B1A3A464200067B03 /* UFOPlayerControlSystem.swift */; };
 		65C8E59B1A16C5D40022AB2C /* UFOPhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C8E59A1A16C5D40022AB2C /* UFOPhysicsSystem.swift */; };
@@ -55,11 +51,7 @@
 		653137791A1547C7002453B0 /* UFOUpdatePhase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFOUpdatePhase.swift; sourceTree = "<group>"; };
 		6531377C1A154821002453B0 /* UFOScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFOScene.swift; sourceTree = "<group>"; };
 		6531377F1A154B46002453B0 /* UFOUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFOUpdatable.swift; sourceTree = "<group>"; };
-		653BBF3F1A3A3ECF00067B03 /* aSBgImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aSBgImg.png; sourceTree = "<group>"; };
-		653BBF411A3A3EDC00067B03 /* aSThumbImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aSThumbImg.png; sourceTree = "<group>"; };
 		653BBF431A3A3EFB00067B03 /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
-		653BBF451A3A407400067B03 /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
-		653BBF461A3A407400067B03 /* apple@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "apple@2x.png"; sourceTree = "<group>"; };
 		653BBF491A3A449200067B03 /* UFOLocalPlayerComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFOLocalPlayerComponent.swift; sourceTree = "<group>"; };
 		653BBF4B1A3A464200067B03 /* UFOPlayerControlSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFOPlayerControlSystem.swift; sourceTree = "<group>"; };
 		65C8E59A1A16C5D40022AB2C /* UFOPhysicsSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UFOPhysicsSystem.swift; sourceTree = "<group>"; };
@@ -161,10 +153,6 @@
 				65D1EE7C1A1481C4000FFAFA /* GameViewController.swift */,
 				65D1EE7E1A1481C4000FFAFA /* Main.storyboard */,
 				65D1EE811A1481C4000FFAFA /* Images.xcassets */,
-				653BBF451A3A407400067B03 /* apple.png */,
-				653BBF461A3A407400067B03 /* apple@2x.png */,
-				653BBF3F1A3A3ECF00067B03 /* aSBgImg.png */,
-				653BBF411A3A3EDC00067B03 /* aSThumbImg.png */,
 				65D1EE831A1481C4000FFAFA /* LaunchScreen.xib */,
 				65D1EE741A1481C4000FFAFA /* Supporting Files */,
 			);
@@ -323,10 +311,6 @@
 			files = (
 				65D1EE851A1481C4000FFAFA /* LaunchScreen.xib in Resources */,
 				65D1EE821A1481C4000FFAFA /* Images.xcassets in Resources */,
-				653BBF421A3A3EDC00067B03 /* aSThumbImg.png in Resources */,
-				653BBF481A3A407400067B03 /* apple@2x.png in Resources */,
-				653BBF471A3A407400067B03 /* apple.png in Resources */,
-				653BBF401A3A3ECF00067B03 /* aSBgImg.png in Resources */,
 				65D1EE791A1481C4000FFAFA /* GameScene.sks in Resources */,
 				65D1EE801A1481C4000FFAFA /* Main.storyboard in Resources */,
 			);
