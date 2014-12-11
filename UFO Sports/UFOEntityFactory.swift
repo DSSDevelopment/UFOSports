@@ -11,7 +11,7 @@ import SpriteKit
 
 class UFOEntityFactory
 {
-    func createUFOPlayerWithEntityManager(entityManager: UFOEntityManager, position: CGPoint)
+    func createUFONPCWithEntityManager(entityManager: UFOEntityManager, position: CGPoint)
     {
         var entity = entityManager.createEntity()
         let ufotexture = SKTexture(imageNamed: "UFO")
@@ -27,7 +27,7 @@ class UFOEntityFactory
         entityManager.addEntity(entity)
     }
     
-    func createUFONPCWithEntityManager(entityManager: UFOEntityManager, position: CGPoint)
+    func createUFOPlayerWithEntityManager(entityManager: UFOEntityManager, position: CGPoint)
     {
         var entity = entityManager.createEntity()
         let ufotexture = SKTexture(imageNamed: "UFO")
@@ -36,10 +36,12 @@ class UFOEntityFactory
         var renderComponent = UFORenderComponent(node: ufoNode)
         var position = UFOPositionComponent(x: Double(position.x), y: Double(position.y), rotation: 1)
         var physicsBody = UFOPhysicsBodyComponent()
-        physicsBody.speed = 40.0
+        var localPlayer = UFOLocalPlayerComponent()
         entityManager.addComponentToEntity(renderComponent, entity: entity)
         entityManager.addComponentToEntity(position, entity: entity)
         entityManager.addComponentToEntity(physicsBody, entity: entity)
+        entityManager.addComponentToEntity(localPlayer, entity: entity)
         entityManager.addEntity(entity)
+        entityManager.localPlayer = entity
     }
 }

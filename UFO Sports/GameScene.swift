@@ -14,7 +14,14 @@ class GameScene: SKScene, AnalogStickProtocol {
     var entityManager = UFOEntityManager()
     var renderingSystem = UFORenderingSystem()
     var physicsSystem = UFOPhysicsSystem()
+    var inputSystem = UFOPlayerControlSystem()
     var updateObservers = [UFOUpdatable]()
+    
+    //Camera system
+    var world = SKNode()
+    var camera = SKNode()
+    var localPlayer: UFOEntity?
+    var UINode = SKNode()
     
     // MARK: Analog Stick Properties
     
@@ -26,42 +33,44 @@ class GameScene: SKScene, AnalogStickProtocol {
     override func didMoveToView(view: SKView)
     {
         
-        let bgDiametr: CGFloat = 120
-        let thumbDiametr: CGFloat = 60
-        let joysticksRadius = bgDiametr / 2
-        moveAnalogStick.bgNodeDiametr = bgDiametr
-        moveAnalogStick.thumbNodeDiametr = thumbDiametr
-        moveAnalogStick.position = CGPointMake(joysticksRadius + 60, joysticksRadius + 145)
-        moveAnalogStick.delagate = self
-        self.addChild(moveAnalogStick)
-        rotateAnalogStick.bgNodeDiametr = bgDiametr
-        rotateAnalogStick.thumbNodeDiametr = thumbDiametr
-        rotateAnalogStick.position = CGPointMake(CGRectGetMaxX(self.frame) - joysticksRadius - 60, joysticksRadius + 145)
-        rotateAnalogStick.delagate = self
-        self.addChild(rotateAnalogStick)
-        // apple
-        appleNode = SKSpriteNode(imageNamed: "apple")
-        if let aN = appleNode {
-            aN.physicsBody = SKPhysicsBody(texture: aN.texture, size: aN.size)
-            aN.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-            aN.physicsBody?.affectedByGravity = false;
-            self.insertChild(aN, atIndex: 0)
-        }
-        self.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
-        addOneApple()
-        
-        
-        
         if initialized == false
         {
+            self.anchorPoint = CGPointMake(0.5, 0.5)
+            self.addChild(self.world)
+            self.camera.name = "camera"
+            self.world.addChild(self.camera)
+            self.UINode.position = CGPointMake(0.0, 0.0)
+            self.UINode.zPosition = 10000
+            self.world.addChild(self.UINode)
+            let backgroundNode = SKSpriteNode(imageNamed: "background.png")
+            backgroundNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+            self.world.addChild(backgroundNode)
+            let bgDiametr: CGFloat = 120
+            let thumbDiametr: CGFloat = 60
+            let joysticksRadius = bgDiametr / 2
+            moveAnalogStick.bgNodeDiametr = bgDiametr
+            moveAnalogStick.thumbNodeDiametr = thumbDiametr
+            moveAnalogStick.position = CGPointMake(joysticksRadius + 60 - (self.frame.width/2), joysticksRadius + 145 - (self.frame.height/2))
+            moveAnalogStick.delagate = self
+            self.UINode.addChild(moveAnalogStick)
+            rotateAnalogStick.bgNodeDiametr = bgDiametr
+            rotateAnalogStick.thumbNodeDiametr = thumbDiametr
+            rotateAnalogStick.position = CGPointMake(CGRectGetMaxX(self.frame) - joysticksRadius - 60, joysticksRadius + 145)
+            rotateAnalogStick.delagate = self
+            self.UINode.addChild(rotateAnalogStick)
             entityManager.scene = self
+            entityManager.world = self.world
             updateObservers.append(entityManager)
             entityManager.addSystem(renderingSystem)
             entityManager.addSystem(physicsSystem)
+            entityManager.addSystem(inputSystem)
             entityFactory.createUFOPlayerWithEntityManager(entityManager, position: CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)))
-            entityFactory.createUFOPlayerWithEntityManager(entityManager, position: CGPoint(x:CGRectGetMidX(self.frame)+65.0, y:CGRectGetMidY(self.frame)+20.0))
+            entityFactory.createUFONPCWithEntityManager(entityManager, position: CGPoint(x:CGRectGetMidX(self.frame)-125.0, y:CGRectGetMidY(self.frame)+20.0))
             initialized = true
         }
+        
+        
+  
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent)
@@ -69,7 +78,7 @@ class GameScene: SKScene, AnalogStickProtocol {
         /* Called when a touch begins */
         super.touchesBegan(touches, withEvent: event)
         if let touch = touches.anyObject() as? UITouch {
-            appleNode?.position = touch.locationInNode(self)
+            //appleNode?.position = touch.locationInNode(self)
         }
 
         
@@ -89,22 +98,28 @@ class GameScene: SKScene, AnalogStickProtocol {
         }
     }
     
-    // MARK: Analog Stick Temporary Methods
-    func addOneApple()->Void {
-        let appleNode = SKSpriteNode(imageNamed: "apple");
-        appleNode.physicsBody = SKPhysicsBody(texture: appleNode.texture, size: appleNode.size)
-        appleNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        appleNode.physicsBody?.affectedByGravity = false;
-        self.addChild(appleNode)
+    override func didFinishUpdate()
+    {
+        self.centerOnNode(self.world.childNodeWithName("camera")!)
     }
     
-    func moveAnalogStick(analogStick: AnalogStick, velocity: CGPoint, angularVelocity: Float) {
-        if let aN = appleNode {
+    func centerOnNode(node: SKNode)
+    {
+        let cameraPositionInScene: CGPoint = node.scene!.convertPoint(node.position, fromNode: node.parent!)
+        node.parent?.position = CGPointMake(node.parent!.position.x, node.parent!.position.y)
+    }
+    
+    // MARK: Analog Stick Temporary Methods
+    
+    func moveAnalogStick(analogStick: AnalogStick, velocity: CGPoint, angularVelocity: Float)
+    {
+        //if self.inputSystem {
             if analogStick.isEqual(moveAnalogStick) {
-                aN.position = CGPointMake(aN.position.x + (velocity.x * 0.12), aN.position.y + (velocity.y * 0.12))
+                //aN.position = CGPointMake(aN.position.x + (velocity.x * 0.12), aN.position.y + (velocity.y * 0.12))
+                self.inputSystem.acceleratePlayer(velocity)
             } else if analogStick.isEqual(rotateAnalogStick) {
-                aN.zRotation = CGFloat(angularVelocity)
+                //aN.zRotation = CGFloat(angularVelocity)
             }
-        }
+        //}
     }
 }

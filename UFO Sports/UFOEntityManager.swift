@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SpriteKit
 
 public class UFOEntityManager
 {
@@ -19,6 +20,8 @@ public class UFOEntityManager
     final var lowestUnassignedEid: Int64    = 1
     
     final weak var scene:                   GameScene?
+    final weak var localPlayer:             UFOEntity?
+    final weak var world:                   SKNode?
     
     public var paused                       = false
     var initialized                         = false

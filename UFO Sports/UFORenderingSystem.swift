@@ -27,9 +27,11 @@ public class UFORenderingSystem: UFOSystem
     override public func add(entity: UFOEntity)
     {
         super.add(entity)
+        if(self.accepts(entity)){
         nodes.append(self.getNodeForEntity(entity))
         positions.append(entity.get(UFOPositionComponent)!)
-        self.entityManager.scene!.addChild(self.getNodeForEntity(entity))
+        self.entityManager.world!.addChild(self.getNodeForEntity(entity))
+        }
     }
     
     override public func update()

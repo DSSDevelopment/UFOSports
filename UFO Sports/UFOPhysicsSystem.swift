@@ -27,9 +27,10 @@ public final class UFOPhysicsSystem: UFOSystem
     override public func add(entity: UFOEntity)
     {
         super.add(entity)
+        if(self.accepts(entity)){
         physicsBodies.append(self.getPhysicsBodyForEntity(entity))
         positions.append(self.getPositionBodyForEntity(entity))
-
+        }
     }
     
     override public func update()
