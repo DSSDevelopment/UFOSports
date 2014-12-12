@@ -20,8 +20,9 @@ class GameScene: SKScene, AnalogStickProtocol {
     //Camera system
     var world = SKNode()
     var camera = SKNode()
-    var localPlayer: UFOEntity?
+    var localPlayerNode: SKNode?
     var UINode = SKNode()
+    var newCameraPosition: CGPoint = CGPointMake(0.0, 0.0)
     
     // MARK: Analog Stick Properties
     
@@ -41,7 +42,7 @@ class GameScene: SKScene, AnalogStickProtocol {
             self.world.addChild(self.camera)
             self.UINode.position = CGPointMake(0.0, 0.0)
             self.UINode.zPosition = 10000
-            self.world.addChild(self.UINode)
+            self.addChild(self.UINode)
             let backgroundNode = SKSpriteNode(imageNamed: "background.png")
             backgroundNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
             self.world.addChild(backgroundNode)
@@ -53,11 +54,12 @@ class GameScene: SKScene, AnalogStickProtocol {
             moveAnalogStick.position = CGPointMake(joysticksRadius + 60 - (self.frame.width/2), joysticksRadius + 145 - (self.frame.height/2))
             moveAnalogStick.delagate = self
             self.UINode.addChild(moveAnalogStick)
-            rotateAnalogStick.bgNodeDiametr = bgDiametr
+           /* rotateAnalogStick.bgNodeDiametr = bgDiametr
             rotateAnalogStick.thumbNodeDiametr = thumbDiametr
             rotateAnalogStick.position = CGPointMake(CGRectGetMaxX(self.frame) - joysticksRadius - 60, joysticksRadius + 145)
             rotateAnalogStick.delagate = self
             self.UINode.addChild(rotateAnalogStick)
+            */
             entityManager.scene = self
             entityManager.world = self.world
             updateObservers.append(entityManager)
@@ -66,6 +68,7 @@ class GameScene: SKScene, AnalogStickProtocol {
             entityManager.addSystem(inputSystem)
             entityFactory.createUFOPlayerWithEntityManager(entityManager, position: CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame)))
             entityFactory.createUFONPCWithEntityManager(entityManager, position: CGPoint(x:CGRectGetMidX(self.frame)-125.0, y:CGRectGetMidY(self.frame)+20.0))
+            self.localPlayerNode = self.entityManager.localPlayer
             initialized = true
         }
         
@@ -100,13 +103,14 @@ class GameScene: SKScene, AnalogStickProtocol {
     
     override func didFinishUpdate()
     {
+        self.camera.position = self.inputSystem.playerPosition()
         self.centerOnNode(self.world.childNodeWithName("camera")!)
     }
     
     func centerOnNode(node: SKNode)
     {
         let cameraPositionInScene: CGPoint = node.scene!.convertPoint(node.position, fromNode: node.parent!)
-        node.parent?.position = CGPointMake(node.parent!.position.x, node.parent!.position.y)
+        node.parent?.position = CGPointMake(node.parent!.position.x - cameraPositionInScene.x, node.parent!.position.y - cameraPositionInScene.y)
     }
     
     // MARK: Analog Stick Temporary Methods

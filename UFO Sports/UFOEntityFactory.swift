@@ -27,7 +27,7 @@ class UFOEntityFactory
         entityManager.addEntity(entity)
     }
     
-    func createUFOPlayerWithEntityManager(entityManager: UFOEntityManager, position: CGPoint)
+    func createUFOPlayerWithEntityManager(entityManager: UFOEntityManager, position: CGPoint) -> UFOEntity
     {
         var entity = entityManager.createEntity()
         let ufotexture = SKTexture(imageNamed: "UFO")
@@ -42,6 +42,7 @@ class UFOEntityFactory
         entityManager.addComponentToEntity(physicsBody, entity: entity)
         entityManager.addComponentToEntity(localPlayer, entity: entity)
         entityManager.addEntity(entity)
-        entityManager.localPlayer = entity
+        entityManager.localPlayer = renderComponent.node
+        return entity
     }
 }

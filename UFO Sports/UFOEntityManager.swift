@@ -20,7 +20,7 @@ public class UFOEntityManager
     final var lowestUnassignedEid: Int64    = 1
     
     final weak var scene:                   GameScene?
-    final weak var localPlayer:             UFOEntity?
+    final weak var localPlayer:             SKNode?
     final weak var world:                   SKNode?
     
     public var paused                       = false

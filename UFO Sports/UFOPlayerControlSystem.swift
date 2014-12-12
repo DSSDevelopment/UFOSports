@@ -45,8 +45,8 @@ public final class UFOPlayerControlSystem: UFOSystem {
         }
     }
     
-    public func newPlayerPosition(position: CGPoint) {
-        self.nextPlayerPosition = position
+    public func playerPosition()-> CGPoint {
+        return CGPointMake(CGFloat(playerPositionComponent!.x), CGFloat(playerPositionComponent!.y))
     }
     
     public func acceleratePlayer(velocity: CGPoint) {
