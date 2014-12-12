@@ -43,7 +43,7 @@ class GameScene: SKScene, AnalogStickProtocol {
             self.UINode.position = CGPointMake(0.0, 0.0)
             self.UINode.zPosition = 10000
             self.addChild(self.UINode)
-            let backgroundNode = SKSpriteNode(imageNamed: "background.png")
+            let backgroundNode = SKSpriteNode(imageNamed: "Background.png")
             backgroundNode.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
             self.world.addChild(backgroundNode)
             let bgDiametr: CGFloat = 120
